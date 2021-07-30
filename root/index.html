@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <link href="css/main.css" rel="stylesheet"/>
+    </head>
+    <body>
+        <div>
+            <button id="getDataBtn">Get Good</button>
+            <button id="getBadDataBtn">Get Bad</button>
+        </div>
+        <form class="register-form">
+            <label for="firstName">First Name</label>
+            <input name="firstName" type="text"/>
+            <label for="lastName">Last Name</label>
+            <input name="lastName" type="text"/>
+            <label for="email">Email</label>
+            <input name="email" type="email"/>
+            <label for="password">Password</label>
+            <input name="password" type="password"/>
+            <button type="submit">Register</button>
+        </form>
+
+        <div>
+            <h2>Users</h2>
+            <table id="users-table">
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                </tr>
+            </table>
+        </div>
+
+        <hr/>
+        <button onclick="sendMessage()">Send WS Message</button>
+        <button onclick="killHeartbeat()">Kill WS Heartbeat</button>
+        <hr/>
+        <div style="width:200px;height:200px;background-color:blueviolet;">
+            <div id="bubbleDiv" style="width:150px;height:150px;background-color:aqua;">
+                <div id="stopBubbleDiv" style="width:80px;height:80px;background-color:beige;">
+                    <button id="bubbleBtn">Bubble</button>
+                </div>
+            </div>
+        </div>
+        <script>
+            $(document).ready(function() { 
+                $('#bubbleBtn').on('click', (event) => {
+                    console.log("bubbleBtn got event");
+                });
+                $('#bubbleDiv').on('click', (event) => {
+                    console.log("bubbleDiv got event");
+                });
+                $('#stopBubbleDiv').on('click', (event) => {
+                    console.log("stopBubbleDiv got event");
+                    event.stopPropagation();
+                });
+            });     
+        </script>
+        <script src="js/jsonp.js"></script>
+        <script src="js/forms.js"></script>
+
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-app.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+            https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-analytics.js"></script>
+
+        <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-firestore.js"></script>
+        <script src="js/firebase-config.js"></script>
+        <script src="js/firebase-manager.js"></script>
+        <script src="js/ws-messager.js"></script>
+        <div id="scriptInserter"></div>
+    </body>
+</html>

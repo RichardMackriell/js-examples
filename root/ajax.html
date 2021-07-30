@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <link href="css/main.css" rel="stylesheet"/>
+    </head>
+    <body>
+        <button onclick="getData()">Load</button>
+        <table id="currency-table">
+            <tr>
+                <th>Currency</th>
+                <th>Value</th>
+            </tr>
+        </table>
+        <script>
+            // [ { currency: string, value: number } ]
+            function processData(data) {
+                let result = JSON.parse(data);
+                result.forEach(i => {
+                    let line = `<tr><td>${i.currency}</td><td>${i.value}</td></tr>`;
+                    $('#currency-table').append(line);
+                });
+            }
+            function getData() {                
+                $.get('http://localhost:3000/data', (data) => processData(data));
+            }
+        </script>
+    </body>
+</html>
